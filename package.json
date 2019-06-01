@@ -1,0 +1,23 @@
+{
+  "name": "js-dev-env",
+  "version": "1.0.0",
+  "description": "Dev env configuration to node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruralkan/js-dev-env.git"
+  },
+  "author": "Manuel Perales",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruralkan/js-dev-env/issues"
+  },
+  "homepage": "https://github.com/ruralkan/js-dev-env#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "open": "^6.3.0"
+  }
+}
