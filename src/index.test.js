@@ -12,11 +12,11 @@ describe('Our first test', () => {
 });
 
 describe('index.htm', () => {
-    it('Should say hello', () => {
+    it('Should have h1 that say Users', () => {
         const index = fs.readFileSync('./src/index.html', "utf-8");
         const dom = new JSDOM(index);
         //you can provide an array of javascript files to load into the JSDOM environment as the second parameter
         const h1 = dom.window.document.getElementsByTagName('h1')[0];
-        expect(h1.innerHTML).to.equal("Hello World");
+        expect(h1.innerHTML).to.equal("Users");
     });
 });
