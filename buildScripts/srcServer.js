@@ -4,6 +4,10 @@ import open from 'open';
 import webpack from 'webpack';
 import config from '../webpack.config.dev.js';
 
+//The next command en enable use of consoles
+/*eslint-disable no-console*/
+
+
 const port = 3000;
 const app = express();
 const compiler = webpack(config);
