@@ -1,6 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
@@ -18,6 +19,23 @@ export default {
   },
   mode: 'production',
   plugins: [
+    //Create HTML file that includes references to bunded JS
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true
+      },
+      inject: true
+    }),
     //The DedupePlugin was removed in webpack@3 ++
     //new webpack.optimize.DedupePlugin(),
     //Eliminate duplicate packages when generating bundle

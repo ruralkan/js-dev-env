@@ -1,5 +1,7 @@
 import webpack from 'webpack';
 import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+
 
 export default {
   devtool: 'inline-source-map',
@@ -12,6 +14,11 @@ export default {
   },
   mode: 'development',
   plugins: [
+    //Create HTML file that includes references to bunded JS
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      inject: true
+    }),
     new webpack.LoaderOptionsPlugin({
       debug: false,
       noInfo: true
