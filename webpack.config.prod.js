@@ -1,10 +1,14 @@
-import webpack from 'webpack';
 import path from 'path';
+import webpack from 'webpack';
+import DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin';
+
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 export default {
   //This setting specify how source maps should be generated
-  devtool: 'source-map',
-  entry: [path.resolve(__dirname, 'src/index')],
+  //devtool: false,
+  //devtool is not needed anymore for prod
+  entry: [path.resolve(__dirname, 'src/index.js')],
   target: 'web',
   output: {
     //For production we will save the physical files to a folder called dist
@@ -14,10 +18,13 @@ export default {
   },
   mode: 'production',
   plugins: [
+    //The DedupePlugin was removed in webpack@3 ++
+    //new webpack.optimize.DedupePlugin(),
     //Eliminate duplicate packages when generating bundle
-    new webpack.optimize.DedupePlugin(),
+    new DuplicatePackageCheckerPlugin(),
     //Minify JS
-    new webpack.optimize.UglifyJsPlugin(),
+    new UglifyJsPlugin(),
+
     new webpack.LoaderOptionsPlugin({
       debug: false,
       noInfo: true
